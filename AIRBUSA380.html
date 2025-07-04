@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Airbus A380 - AeroExplorer</title>
+  <style>
+    body { margin: 0; padding: 2rem; font-family: Arial, sans-serif; color: #f0f0f0;}
+      
+    h1 { font-size: 2.5rem; text-align: center; color: #ffd700; text-shadow: 2px 2px 4px #000; }
+    h2 { font-size: 1.8rem; color: #00bfff; border-bottom: 1px solid #00bfff; padding-bottom: 0.3rem; }
+    p { font-size: 1.1rem; line-height: 1.7; background: rgba(0,0,0,0.5); padding: 0.8rem; border-radius: 8px; margin-bottom: 1rem; }
+    img { display: block; max-width: 100%; margin: 1rem auto; border: 3px solid #fff; border-radius: 8px; cursor: pointer; transition: transform 0.3s; }
+    img:hover { transform: scale(1.02); }
+    a { color: #ffd700; text-align: center; display: block; margin-top: 2rem; font-size: 1.2rem; text-decoration: none; }
+    #counter { font-size: 1.2rem; text-align: center; color: #ffd700; }
+  </style>
+</head>
+<body>
+  <h1>Airbus A380 - The Giant of the Skies</h1>
+  <img id="aircraftImage" src="https://www.aircraft-info.net/wp-content/uploads/2014/05/airbus-a380-on-ramp.jpg" alt="Airbus A380">
+  <h2>Overview</h2>
+  <p>The Airbus A380 is the world's largest passenger airliner, offering double-deck comfort and efficiency since 2005.</p>
+  <h2>Specifications</h2>
+  <p>🛩 Manufacturer: Airbus<br>🛩 Max speed: 634 mph<br>🛩 Range: 8,000 miles<br>🛩 Capacity: 850 (all economy)<br>🛩 Wingspan: 261 ft 8 in<br>🛩 First flight: 2005</p>
+  <h2>Boarding Process</h2>
+  <p>Check-in → Security → Gate → Board upper/lower deck → Find seat → Ready for take-off</p>
+  <h2>Fun Facts</h2>
+  <p>✈ Over <span id="factCount">0</span> A380s built<br>✈ First full-length double-deck jet<br>✈ Flagship of Emirates</p>
+  <a id="backLink" href="catalog.html">← Back to Catalog</a>
+  <div id="counter"></div>
+  <script>
+    let factEl = document.getElementById("factCount"), count = 0, target = 251;
+    let interval = setInterval(() => { count += Math.ceil((target - count)/10);
+      factEl.textContent = count; if (count >= target) clearInterval(interval); }, 100);
+    document.getElementById("aircraftImage").onclick = () => alert("Zoom in to admire the A380!");
+    document.getElementById("backLink").onclick = e => { e.preventDefault(); window.location.href = "catalog.html"; };
+    document.addEventListener("keydown", e => { if(e.key.toLowerCase()==='c') window.location.href="catalog.html"; });
+    document.getElementById("counter").textContent = "Press 'C' to go back.";
+  </script>
+</body>
+</html>
